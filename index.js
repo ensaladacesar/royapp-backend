@@ -1,10 +1,9 @@
 const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const app = express();
-const port = 3002;
 const https = require('https');
-
+const port = 3002;
 app.use(require('express-status-monitor')())
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
@@ -24,6 +23,14 @@ app.get('/', (request, response) => {
 app.listen(port, () => {
     console.log(`App running on port ${port}.`);
 });
+
+var userRoutes = require('./routes/user.routes');
+userRoutes(app);
+
+var cursosRoutes = require('./routes/cursos.routes');
+cursosRoutes(app);
+
+var server = https.createServer(app);
 
 server.listen(3003, () => {
     console.log("App running over SSL starting on port : " + 3003);
