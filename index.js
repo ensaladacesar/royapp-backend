@@ -30,6 +30,9 @@ userRoutes(app);
 var cursosRoutes = require('./routes/cursos.routes');
 cursosRoutes(app);
 
+var alumnoRoutes = require('./routes/alumno.routes');
+alumnoRoutes(app);
+
 var server = https.createServer(app);
 
 server.listen(3003, () => {
