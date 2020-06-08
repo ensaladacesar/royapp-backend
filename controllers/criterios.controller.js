@@ -18,7 +18,7 @@ const getCriterio = (request, response) => {
             response.status(401).send(error.stack);
         }
         else{
-            response.status(202).send(results);
+            response.status(202).send(results.rows);
         }
     })
 }
