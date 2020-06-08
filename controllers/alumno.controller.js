@@ -50,7 +50,7 @@ const updateAlumno = (request, response) => {
     const { alumno_id, matricula, nombre } = request.body;
 
     console.log(request.body);
-    db.pool.query("UPDATE alumno SET matricula=$1, nombre=$2 WHERE alumno_id =$3", [matricula, nombre, alumno_ids], (error, results) => {
+    db.pool.query("UPDATE alumno SET matricula=$1, nombre=$2 WHERE alumno_id =$3", [alumno_id ,matricula, nombre], (error, results) => {
         if (error) {
             response.status(401).send(error);
         } else {

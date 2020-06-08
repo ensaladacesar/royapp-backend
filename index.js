@@ -33,6 +33,15 @@ cursosRoutes(app);
 var alumnoRoutes = require('./routes/alumno.routes');
 alumnoRoutes(app);
 
+var actividadRoutes = require('./routes/actividad.routes');
+actividadRoutes(app);
+
+var calificacionRoutes = require('./routes/calificacion.routes');
+calificacionRoutes(app);
+
+var criterioRoutes = require('./routes/criterio.routes');
+criterioRoutes(app);
+
 var server = https.createServer(app);
 
 server.listen(3003, () => {
