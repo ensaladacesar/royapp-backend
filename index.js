@@ -25,9 +25,7 @@ app.get('/', (request, response) => {
     response.json({ info: 'Node.js, Express, and Postgres API' })
 });
 
-app.listen(port, () => {
-    console.log(`App running on port ${port}.`);
-});
+
 
 var userRoutes = require('./routes/user.routes');
 userRoutes(app);
@@ -48,6 +46,10 @@ var criterioRoutes = require('./routes/criterio.routes');
 criterioRoutes(app);
 
 var server = https.createServer(app);
+
+app.listen(port, () => {
+    console.log(`App running on port ${port}.`);
+});
 
 server.listen(3005, () => {
     console.log("App running over SSL starting on port : " + 3005);
