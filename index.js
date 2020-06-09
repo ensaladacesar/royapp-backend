@@ -3,7 +3,12 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const https = require('https');
-const port = 3002;
+const port = 3004;
+var fs = require('fs');
+const privateKey = fs.readFileSync('cert/fuerza.key', 'utf8');
+const certificate = fs.readFileSync('cert/fuerza.crt', 'utf8');
+const credentials = { key: privateKey, cert: certificate };
+var server = https.createServer(credentials, app);
 app.use(require('express-status-monitor')())
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
@@ -44,6 +49,6 @@ criterioRoutes(app);
 
 var server = https.createServer(app);
 
-server.listen(3003, () => {
-    console.log("App running over SSL starting on port : " + 3003);
+server.listen(3005, () => {
+    console.log("App running over SSL starting on port : " + 3005);
 });
