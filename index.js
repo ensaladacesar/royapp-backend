@@ -45,7 +45,6 @@ calificacionRoutes(app);
 var criterioRoutes = require('./routes/criterio.routes');
 criterioRoutes(app);
 
-var server = https.createServer(app);
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`);
